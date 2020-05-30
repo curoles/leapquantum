@@ -21,6 +21,7 @@ set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
 include_directories(.)
 #include_directories(${}/lq)
 
+include(external.cmake)
 include(lq/leapquantum.cmake)
 #include(test/test.cmake)
 #include(doc/doc.cmake)
