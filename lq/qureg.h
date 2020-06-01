@@ -12,7 +12,7 @@
 
 namespace lq {
 
-/**Quantum register as sparce array of qubits.
+/**Quantum register as an (optionally sparse) array of qubits.
  *
  * @see http://www.libquantum.de/api/1.1/Quantum-registers.html
  */
@@ -20,6 +20,8 @@ template <typename T = double>
 struct Qureg
 {
     const uint8_t width;   ///< number of qubits in the Qureg
+
+    bool sparse;
     const uint8_t hashw;   ///< width of the hash array
     const uint64_t hashsz;  ///< size of the hash array
 
@@ -35,10 +37,10 @@ struct Qureg
     using Hash = uint32_t;
     Hash hash[];
 
-    Qureg(uint8_t width, uint64_t size=0, uint8_t hashw=0):
-         width(width), hashw(hashw), hashsz(hashw ? (1 << hashw):0)
+    Qureg(uint8_t width, bool sparse, uint64_t size=0, uint8_t hashw=0):
+         width(width), sparse(sparse),
+         hashw(hashw), hashsz(hashw ? (1 << hashw):0)
     {
-        //hashw = hashw ? (std::max(hashw,width+2/*TODO check*/)) : 0;
         hash = hashw ? new Hash[hashsz] : nullptr;
 
         if (size) {
