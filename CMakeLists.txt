@@ -18,17 +18,20 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LEAPQ_COMMON_CXX_FLAGS}")
 # Install inside the build directory.
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
 
-include_directories(.)
-#include_directories(${}/lq)
-
 include(external.cmake)
+
+include_directories(.)
+ExternalProject_Get_Property(vx BINARY_DIR)
+MESSAGE(STATUS "VX_BINARY_DIR:        " ${BINARY_DIR})
+include_directories(${BINARY_DIR}/install/include)
+
 include(lq/leapquantum.cmake)
 #include(test/test.cmake)
 #include(doc/doc.cmake)
 
 
 # Log CMake variables.
-MESSAGE( STATUS "CMAKE_CXX_COMPILER:   " ${CMAKE_CXX_COMPILER} )
-MESSAGE( STATUS "CMAKE_CXX_FLAGS:      " ${CMAKE_CXX_FLAGS} )
-MESSAGE( STATUS "CMAKE_INSTALL_PREFIX: " ${CMAKE_INSTALL_PREFIX} )
+MESSAGE(STATUS "CMAKE_CXX_COMPILER:   " ${CMAKE_CXX_COMPILER})
+MESSAGE(STATUS "CMAKE_CXX_FLAGS:      " ${CMAKE_CXX_FLAGS})
+MESSAGE(STATUS "CMAKE_INSTALL_PREFIX: " ${CMAKE_INSTALL_PREFIX})
 

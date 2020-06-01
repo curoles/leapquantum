@@ -3,9 +3,11 @@
 include(ExternalProject)
 
 ExternalProject_Add(vx
+  PREFIX            vx
   GIT_REPOSITORY    https://github.com/curoles/vecinsn.git
   GIT_TAG           origin/master
   GIT_SHALLOW       TRUE
+  UPDATE_COMMAND    "" # do not check for updates
 )
 
 #ExternalProject_Add(cli

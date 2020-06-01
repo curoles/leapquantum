@@ -14,6 +14,7 @@ set(LEAPQ_SOURCES
 )
 
 add_executable(leapq ${LEAPQ_SOURCES})
+add_dependencies(leapq vx)
 target_compile_options(leapq PUBLIC -O3 -flto -DNDEBUG)
 
 add_executable(leapq-dbg ${LEAPQ_SOURCES})

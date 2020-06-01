@@ -6,6 +6,9 @@
  */
 #include <cstdlib>
 
+#include "vx/vx.hpp"
+#include "qureg.h"
+
 #define UNUSED __attribute__((unused))
 
 /// LEAPQ entry point.
