@@ -35,7 +35,7 @@ struct Qureg
     uint64_t size() const {return state.size();}
 
     using Hash = uint32_t;
-    Hash hash[];
+    Hash* hash;
 
     Qureg(uint8_t width, bool sparse, uint64_t size=0, uint8_t hashw=0):
          width(width), sparse(sparse),
@@ -43,8 +43,11 @@ struct Qureg
     {
         hash = hashw ? new Hash[hashsz] : nullptr;
 
-        if (size) {
+        if (sparse and size) {
             state.resize(size);
+        }
+
+        if (size) {
             realAmp.resize(size);
             imgnAmp.resize(size);
         }

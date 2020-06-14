@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Compiler options.
-set(LEAPQ_M_CFLAGS "-mpopcnt -mfma -march=native")
+set(LEAPQ_M_CFLAGS "-march=native")
 set(LEAPQ_COMMON_CXX_FLAGS "${LEAPQ_M_CFLAGS} -Werror -Wall -Wextra")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LEAPQ_COMMON_CXX_FLAGS}")
 
@@ -26,7 +26,7 @@ MESSAGE(STATUS "VX_BINARY_DIR:        " ${BINARY_DIR})
 include_directories(${BINARY_DIR}/install/include)
 
 include(lq/leapquantum.cmake)
-#include(test/test.cmake)
+include(test/test.cmake)
 #include(doc/doc.cmake)
 
 
